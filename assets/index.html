@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotify Daily Music Drive</title>
     <link rel="stylesheet" href="./style.css">
-
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -31,8 +31,8 @@
             }
         </script>
 
-        <a href="/"><img class="cover" src="./daily-music-drive.jpg"
-                alt="Daily Music Drive"></a>
+        <a href="/"><img class="cover" height="300px"
+                src="./daily-music-drive.jpg" alt="Daily Music Drive"></a>
 
         <div class="info">
             <p>A simple service that creates a playlist from your daily drive
@@ -43,15 +43,19 @@
             <a href="/login" class="login">Login using Spotify</a>
         </div>
 
-        <p class="copyright">
-            <a class="github" href="https://github.com/Matix-Media/spotify-daily-music-drive"
-                target="_blank"><img src="./github.svg"
-                    alt=""></a>
-            
-            Copyright &copy;
-            <script>document.write(/\d{4}/.exec(Date())[0])</script> Matix
-            Media, Inc.
-        </p>
+        <div class="footer">
+            <a class="github"
+                href="https://github.com/Matix-Media/spotify-daily-music-drive"
+                target="_blank"><img src="./github.svg" alt=""></a>
+
+            <p class="copyright">
+                Copyright &copy;
+                <script>document.write(/\d{4}/.exec(Date())[0])</script> Matix
+                Media, Inc.
+            </p>
+
+            <p class="disclaimer">Not associated with Spotify AB in any way.</p>
+        </div>
     </div>
 </body>
 

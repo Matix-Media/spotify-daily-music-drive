@@ -1,4 +1,12 @@
 @font-face {
+  font-family: 'Circular Std';
+  src: url('./font/CircularSpotifyText-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Circular Std";
   src: url("./font/CircularStd-Medium.woff2") format("woff2");
   font-weight: 500;
@@ -88,7 +96,7 @@ a {
   margin-top: 10px;
 }
 
-.copyright {
+.footer {
   height: 100%;
   display: flex;
   justify-content: end;
@@ -104,4 +112,11 @@ a {
 
 .github img {
   width: 24px;
+}
+
+.disclaimer {
+  margin-top: 5px;
+  color: #a7a7a7;
+  font-weight: 300;
+  font-size: 0.875rem;
 }
