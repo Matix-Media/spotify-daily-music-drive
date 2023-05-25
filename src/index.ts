@@ -22,7 +22,7 @@ const generator = new Generator(prisma);
 
 const fastify = Fastify();
 fastify.register(fastifyStatic, {
-  root: path.join(__dirname, "assets"),
+  root: path.join(__dirname, "../assets"),
 });
 
 fastify.get("/login", async (req, rep) => {
