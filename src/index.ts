@@ -66,7 +66,7 @@ fastify.get<{ Querystring: { code: string; state: string } }>(
       console.log(
         "Spotify ID",
         userInfos.body.id,
-        "[d-" + existingUser.id + "] logged in"
+        "[u-" + existingUser.id + "] logged in"
       );
       user = await prisma.user.update({
         where: { id: existingUser.id },
