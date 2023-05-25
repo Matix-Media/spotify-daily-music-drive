@@ -1,0 +1,14 @@
+{
+    "apps": [
+        {
+            "name": "spotify-daily-music-drive",
+            "namespace": "spotify-daily-music-drive",
+            "exec_mode": "for",
+            "script": "./src/index.js",
+            "cwd": "./server/dist",
+            "env": {
+                "DEVELOPMENT_MODE": "false"
+            }
+        }
+    ]
+}
