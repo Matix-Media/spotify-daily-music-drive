@@ -4,7 +4,7 @@
             "name": "spotify-daily-music-drive",
             "namespace": "spotify-daily-music-drive",
             "exec_mode": "fork",
-            "script": "./src/index.js",
+            "script": "./dist/index.js",
             "cwd": "./",
             "env": {
                 "DEVELOPMENT_MODE": "false"
