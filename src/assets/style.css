@@ -1,0 +1,96 @@
+@font-face {
+  font-family: "Circular Std";
+  src: url("./font/CircularStd-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Circular Std";
+  src: url("./font/CircularStd-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "Circular Std";
+  background-color: #121212;
+  color: white;
+  margin: 0;
+}
+
+.side {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  background-size: cover;
+}
+
+.left {
+  left: 0;
+  background-image: url(./left.png);
+  aspect-ratio: 17 / 54;
+}
+
+.right {
+  right: 0;
+  background-image: url(./right.png);
+  aspect-ratio: 37 / 86;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+img {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+
+.info {
+  background-color: #1a1a1a;
+  padding: 20px 25px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.notice {
+  margin-top: 20px;
+  background-color: #13a047;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: #1fdf64;
+}
+
+.login {
+  display: block;
+  margin-top: 10px;
+}
+
+.single {
+  margin-top: 100px;
+}
+
+.remove-notice {
+  margin-top: 10px;
+}
+
+.copyright {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 25px;
+}

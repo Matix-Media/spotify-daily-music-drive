@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success - Spotify Daily Music Drive</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="side left"></div>
+    <div class="side right"></div>
+
+    <div class="content">
+        <div class="info single">
+            <p>
+                Successfully logged in using Spotify.
+            </p>
+            <p class="remove-notice">
+                To remove your account
+                connection and
+                disable the generation of Daily Music Drive
+                <a href="/remove-account" id="remove-account">click here</a>.
+                <script>
+                    const params = new URLSearchParams(window.location.search);
+                    const button = document.getElementById("remove-account");
+                    button.setAttribute("href", "/remove-account?token=" + params.get("token"))
+                </script>
+            </p>
+        </div>
+
+
+        <p class="copyright">
+            Copyright &copy;
+            <script>document.write(/\d{4}/.exec(Date())[0])</script> Matix
+            Media, Inc.
+        </p>
+    </div>
+
+
+</body>
+
+</html>

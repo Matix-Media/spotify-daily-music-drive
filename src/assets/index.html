@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Daily Music Drive</title>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+    <div class="side left"></div>
+    <div class="side right"></div>
+
+    <div class="content">
+        <div class="notice info" style="display: none;">
+            <p class="removed" style="display: none;">Successfully removed
+                account.</p>
+        </div>
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const notices = document.querySelector(".notice");
+            if (params.has("notice")) {
+                const notice = notices.querySelector("." + params.get("notice"));
+                if (notice != null) {
+                    notice.style.display = "block";
+                    notices.style.display = "block";
+                }
+            }
+        </script>
+
+        <a href="/"><img src="./daily-music-drive.jpg"
+                alt="Daily Music Drive"></a>
+
+        <div class="info">
+            <p>A simple service that creates a playlist from your daily drive
+                without
+                podcasts.</p>
+
+
+            <a href="/login" class="login">Login using Spotify</a>
+        </div>
+
+        <p class="copyright">
+            Copyright &copy;
+            <script>document.write(/\d{4}/.exec(Date())[0])</script> Matix
+            Media, Inc.
+        </p>
+    </div>
+</body>
+
+</html>

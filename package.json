@@ -1,0 +1,23 @@
+{
+  "name": "spotify-daily-music-drive",
+  "packageManager": "yarn@3.3.1",
+  "scripts": {
+    "dev": "ts-node src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.3",
+    "@types/node-cron": "^3.0.7",
+    "@types/spotify-web-api-node": "^5.0.7",
+    "prisma": "^4.14.1",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@fastify/static": "^6.10.1",
+    "@prisma/client": "^4.14.1",
+    "dotenv": "^16.0.3",
+    "fastify": "^4.17.0",
+    "node-cron": "^3.0.2",
+    "spotify-web-api-node": "^5.0.2",
+    "ts-node": "^10.9.1"
+  }
+}
