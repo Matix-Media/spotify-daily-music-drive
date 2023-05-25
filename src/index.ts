@@ -30,6 +30,7 @@ fastify.get("/login", async (req, rep) => {
   states.push(state);
   const authUrl = spotify.createAuthorizeURL(
     [
+      "ugc-image-upload",
       "playlist-read-private",
       "playlist-read-collaborative",
       "playlist-modify-private",

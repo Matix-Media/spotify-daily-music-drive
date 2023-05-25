@@ -45,17 +45,18 @@ export default class Generator {
       const playlistData = await spotify.createPlaylist("Daily Music Drive", {
         description: "Spotify's Daily Drive without podcasts",
       });
-      /*console.log("Uploading playlist cover");
+      console.log("Uploading playlist cover");
       await spotify.uploadCustomPlaylistCoverImage(
         playlistData.body.id,
         imageStore.dailyMusicDrive
-      );*/
+      );
       await this.prisma.user.update({
         where: { id: user.id },
         data: { daily_music_drive_id: playlistData.body.id },
       });
       user.daily_music_drive_id = playlistData.body.id;
     }
+
     const searchResultData = await spotify.searchPlaylists("Daily Drive");
     const dailyDrivePlaylist: SpotifyApi.PlaylistObjectSimplified =
       searchResultData.body.playlists.items.find(
