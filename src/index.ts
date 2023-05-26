@@ -159,7 +159,7 @@ async function start() {
   const port = Number.parseInt(process.env.PORT || "3000");
   fastify.listen({ port });
   console.log("Listening on port " + port);
-  cron.schedule("45 1 * * *", syncAllDailyDrives);
+  cron.schedule("30 0 * * *", syncAllDailyDrives);
 
   if (process.argv.includes("--sync-now")) {
     syncAllDailyDrives();
