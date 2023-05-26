@@ -33,6 +33,8 @@ export default class Generator {
     if (Date.now() >= user.token_expires_on.getTime() - 5000) {
       console.log("[u-" + user.id + "] Refresh access tokens");
       const tokenData = await spotify.refreshAccessToken();
+      spotify.setAccessToken(tokenData.body.access_token);
+      spotify.setRefreshToken(tokenData.body.refresh_token);
       this.prisma.user.update({
         where: { id: user.id },
         data: {
@@ -65,6 +67,8 @@ export default class Generator {
       });
       user.daily_music_drive_id = playlistData.body.id;
     }
+
+    console.log("[u-" + user.id + "] Retrieving Daily Drive");
 
     const searchResultData = await spotify.searchPlaylists("Daily Drive");
     const dailyDrivePlaylist: SpotifyApi.PlaylistObjectSimplified =
