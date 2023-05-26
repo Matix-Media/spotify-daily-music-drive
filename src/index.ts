@@ -134,7 +134,9 @@ async function syncAllDailyDrives() {
   console.log("Generating Daily Music Drives for all users");
   const users = await prisma.user.findMany();
   for (const user of users) {
-    generator.generateDailyMusicDrive(user);
+    generator.generateDailyMusicDrive(user).catch((err) => {
+      console.error(err);
+    });
   }
 }
 
