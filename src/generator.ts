@@ -2,11 +2,18 @@ import { PrismaClient, User } from "@prisma/client";
 import SpotifyWebApi from "spotify-web-api-node";
 import imageStore from "./imageStore";
 
+interface SpotifyConfig {
+  clientId: string;
+  clientSecret: string;
+}
+
 export default class Generator {
   private prisma: PrismaClient;
+  private spotifyConfig: SpotifyConfig;
 
-  constructor(prisma: PrismaClient) {
+  constructor(prisma: PrismaClient, spotifyConfig: SpotifyConfig) {
     this.prisma = prisma;
+    this.spotifyConfig = spotifyConfig;
   }
 
   async generateDailyMusicDrive(user: User) {
@@ -20,6 +27,8 @@ export default class Generator {
     const spotify = new SpotifyWebApi({
       accessToken: user.access_token,
       refreshToken: user.refresh_token,
+      clientId: this.spotifyConfig.clientId,
+      clientSecret: this.spotifyConfig.clientSecret,
     });
     if (Date.now() >= user.token_expires_on.getTime() - 5000) {
       console.log("[u-" + user.id + "] Refresh access tokens");

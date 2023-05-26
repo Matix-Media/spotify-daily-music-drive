@@ -18,7 +18,10 @@ const spotify = new SpotifyWebApi({
 });
 
 const prisma = new PrismaClient();
-const generator = new Generator(prisma);
+const generator = new Generator(prisma, {
+  clientId: process.env.SPOTIFY_ID,
+  clientSecret: process.env.SPOTIFY_SECRET,
+});
 
 const fastify = Fastify();
 fastify.register(fastifyStatic, {
@@ -154,7 +157,7 @@ async function start() {
   const port = Number.parseInt(process.env.PORT || "3000");
   fastify.listen({ port });
   console.log("Listening on port " + port);
-  cron.schedule("0 3 * * *", syncAllDailyDrives);
+  cron.schedule("30 0 * * *", syncAllDailyDrives);
 
   if (process.argv.includes("--sync-now")) {
     syncAllDailyDrives();
