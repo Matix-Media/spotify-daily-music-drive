@@ -76,7 +76,7 @@ export default class Generator {
       );
     }
 
-    console.log("[d-" + user.id + "] Adding new tracks");
+    console.log("[u-" + user.id + "] Adding new tracks");
     const dailyDriveTracks = (
       await spotify.getPlaylistTracks(dailyDrivePlaylist.id)
     ).body.items
@@ -88,7 +88,7 @@ export default class Generator {
     );
 
     console.log(
-      "[d-" +
+      "[u-" +
         user.id +
         "] Done (" +
         Math.round((Date.now() - startTime + Number.EPSILON) / 10) / 100 +
