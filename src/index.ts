@@ -90,7 +90,7 @@ fastify.get<{ Querystring: { code: string; state: string } }>(
           token_expires_on: tokenValidUntil,
         },
       });
-      generator.generateDailyMusicDrive(user);
+      tryToSyncDailyDrive(user);
     }
 
     const accountRemoveToken = user.id + "-" + makeId(128);
@@ -130,13 +130,39 @@ fastify.get<{ Querystring: { token: string } }>(
   }
 );
 
+async function tryToSyncDailyDrive(user: User) {
+  let tries = 0;
+  while (tries < 3)
+    try {
+      await generator.generateDailyMusicDrive(user);
+      break;
+    } catch (err) {
+      console.error(
+        "[u-" +
+          user.id +
+          "] Failed to generate Daily Music Drive for " +
+          user.id +
+          ". Retrying"
+      );
+      console.error(err);
+      tries++;
+    }
+  if (tries == 4) {
+    console.error(
+      "[u-" +
+        user.id +
+        "] Could not generate Daily Music Drive for " +
+        user.id +
+        " even after trying 3 times."
+    );
+  }
+}
+
 async function syncAllDailyDrives() {
   console.log("Generating Daily Music Drives for all users");
   const users = await prisma.user.findMany();
   for (const user of users) {
-    generator.generateDailyMusicDrive(user).catch((err) => {
-      console.error(err);
-    });
+    tryToSyncDailyDrive(user);
   }
 }
 
