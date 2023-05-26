@@ -45,7 +45,7 @@ export default class Generator {
       const playlistData = await spotify.createPlaylist("Daily Music Drive", {
         description: "Spotify's Daily Drive without podcasts",
       });
-      console.log("Uploading playlist cover");
+      console.log("[u-" + user.id + "] Uploading playlist cover");
       await spotify.uploadCustomPlaylistCoverImage(
         playlistData.body.id,
         imageStore.dailyMusicDrive
