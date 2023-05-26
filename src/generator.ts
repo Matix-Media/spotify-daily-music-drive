@@ -35,14 +35,15 @@ export default class Generator {
       const tokenData = await spotify.refreshAccessToken();
       spotify.setAccessToken(tokenData.body.access_token);
       spotify.setRefreshToken(tokenData.body.refresh_token);
+      const tokenValidUntil = new Date(
+        Date.now() + tokenData.body.expires_in * 1000
+      );
       this.prisma.user.update({
         where: { id: user.id },
         data: {
           access_token: tokenData.body.access_token,
           refresh_token: tokenData.body.refresh_token,
-          token_expires_on: new Date(
-            Date.now() + tokenData.body.expires_in * 1000
-          ),
+          token_expires_on: tokenValidUntil,
         },
       });
     }
@@ -56,6 +57,7 @@ export default class Generator {
       const playlistData = await spotify.createPlaylist("Daily Music Drive", {
         description: "Spotify's Daily Drive without podcasts",
       });
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       console.log("[u-" + user.id + "] Uploading playlist cover");
       await spotify.uploadCustomPlaylistCoverImage(
         playlistData.body.id,
@@ -66,6 +68,7 @@ export default class Generator {
         data: { daily_music_drive_id: playlistData.body.id },
       });
       user.daily_music_drive_id = playlistData.body.id;
+      await new Promise((resolve) => setTimeout(resolve, 1000));
     }
 
     console.log("[u-" + user.id + "] Retrieving Daily Drive");
