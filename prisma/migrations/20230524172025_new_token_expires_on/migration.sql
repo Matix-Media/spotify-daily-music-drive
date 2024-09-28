@@ -5,4 +5,4 @@
 
 */
 -- AlterTable
-ALTER TABLE `user` ADD COLUMN `token_expires_on` DATETIME(3) NOT NULL;
+ALTER TABLE `User` ADD COLUMN `token_expires_on` DATETIME(3) NOT NULL;

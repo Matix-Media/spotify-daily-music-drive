@@ -6,7 +6,7 @@
 
 */
 -- AlterTable
-ALTER TABLE `user` ADD COLUMN `daily_music_drive_id` VARCHAR(191) NOT NULL;
+ALTER TABLE `User` ADD COLUMN `daily_music_drive_id` VARCHAR(191) NOT NULL;
 
 -- CreateIndex
 CREATE UNIQUE INDEX `User_daily_music_drive_id_key` ON `User`(`daily_music_drive_id`);
