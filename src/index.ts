@@ -1,11 +1,11 @@
+import fastifyStatic from "@fastify/static";
+import { PrismaClient, User } from "@prisma/client";
 import * as dotenv from "dotenv";
 import Fastify from "fastify";
-import fastifyStatic from "@fastify/static";
+import cron from "node-cron";
 import path from "path";
 import SpotifyWebApi from "spotify-web-api-node";
-import { PrismaClient, User } from "@prisma/client";
 import Generator from "./generator";
-import cron from "node-cron";
 
 dotenv.config();
 const states: string[] = [];
@@ -183,7 +183,7 @@ async function start() {
   console.log("Starting...");
   await prisma.$connect();
   const port = Number.parseInt(process.env.PORT || "3000");
-  fastify.listen({ port });
+  fastify.listen({ port, host: "0.0.0.0" });
   console.log("Listening on port " + port);
   cron.schedule("30 0 * * *", syncAllDailyDrives);
 
