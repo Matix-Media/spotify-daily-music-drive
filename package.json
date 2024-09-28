@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "ts-node src/index.ts",
         "build": "tsc",
-        "init": "prisma migrate dev",
+        "init": "prisma migrate deploy",
         "start": "node dist/index.js"
     },
     "devDependencies": {
